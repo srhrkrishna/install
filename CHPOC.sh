@@ -45,7 +45,6 @@ PATH="$HOME/bin:$PATH" PKG_CONFIG_PATH="$HOME/ffmpeg_build/lib/pkgconfig" ./conf
 --extra-ldflags="-L$HOME/ffmpeg_build/lib" \
 --bindir="$HOME/bin" \
 --enable-gpl \
---enable-libass \
 --enable-libfdk-aac \
 --enable-libfreetype \
 --enable-libmp3lame \
