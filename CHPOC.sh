@@ -12,7 +12,7 @@ mkdir files;
 chmod 777 files;
 sudo service apache2 restart;
 
-sudo apt-get -y --force-yes install autoconf automake build-essential libass-dev libfreetype6-dev libgpac-dev libsdl1.2-dev libtheora-dev libtool libva-dev libvdpau-dev libvorbis-dev libxcb1-dev libxcb-shm0-dev libxcb-xfixes0-dev pkg-config texi2html zlib1g-dev libx264-dev cmake mercurial unzip libmp3lame-dev libopus-dev libfaac-dev;
+sudo apt-get -y --force-yes install autoconf automake build-essential libfreetype6-dev libgpac-dev libsdl1.2-dev libtheora-dev libtool libva-dev libvdpau-dev libvorbis-dev libxcb1-dev libxcb-shm0-dev libxcb-xfixes0-dev pkg-config texi2html zlib1g-dev libx264-dev cmake mercurial unzip libmp3lame-dev libopus-dev libfaac-dev;
 
 
 mkdir ~/ffmpeg_sources;
