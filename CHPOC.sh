@@ -12,8 +12,11 @@ mkdir files;
 chmod 777 files;
 sudo service apache2 restart;
 
-sudo apt-get -y --force-yes install autoconf automake build-essential libfreetype6-dev libgpac-dev libsdl1.2-dev libtheora-dev libtool libva-dev libvdpau-dev libvorbis-dev libxcb1-dev libxcb-shm0-dev libxcb-xfixes0-dev pkg-config texi2html zlib1g-dev libx264-dev cmake mercurial unzip libmp3lame-dev libopus-dev libfaac-dev;
+sudo apt-get -y --force-yes install autoconf automake build-essential libass-dev libfreetype6-dev libgpac-dev \
+libsdl1.2-dev libtheora-dev libtool libva-dev libvdpau-dev libvorbis-dev libxcb1-dev libxcb-shm0-dev \
+libxcb-xfixes0-dev pkg-config texi2html zlib1g-dev
 
+sudo apt-get -y install libx264-dev cmake mercurial
 
 mkdir ~/ffmpeg_sources;
 cd ~/ffmpeg_sources;
@@ -21,7 +24,7 @@ hg clone https://bitbucket.org/multicoreware/x265;
 cd ~/ffmpeg_sources/x265/build/linux;
 PATH="$HOME/bin:$PATH" cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX="$HOME/ffmpeg_build" -DENABLE_SHARED:bool=off ../../source;
 make;
-make install;
+make install
 make distclean;
 
 cd ~/ffmpeg_sources;
@@ -31,8 +34,10 @@ cd mstorsjo-fdk-aac*;
 autoreconf -fiv;
 ./configure --prefix="$HOME/ffmpeg_build" --disable-shared;
 make;
-make install;
+make install
 make distclean;
+
+sudo apt-get -y install libmp3lame-dev libopus-dev
 
 cd ~/ffmpeg_sources;
 wget http://ffmpeg.org/releases/ffmpeg-snapshot.tar.bz2;
@@ -45,6 +50,7 @@ PATH="$HOME/bin:$PATH" PKG_CONFIG_PATH="$HOME/ffmpeg_build/lib/pkgconfig" ./conf
 --extra-ldflags="-L$HOME/ffmpeg_build/lib" \
 --bindir="$HOME/bin" \
 --enable-gpl \
+--enable-libass \
 --enable-libfdk-aac \
 --enable-libfreetype \
 --enable-libmp3lame \
@@ -55,11 +61,12 @@ PATH="$HOME/bin:$PATH" PKG_CONFIG_PATH="$HOME/ffmpeg_build/lib/pkgconfig" ./conf
 --enable-libx265 \
 --enable-nonfree \
 --disable-yasm;
-PATH="$HOME/bin:$PATH"; make;
-make install;
+PATH="$HOME/bin:$PATH" make;
+make install
 make distclean;
 hash -r;
 
+sudo apt-get -y install libfaac-dev
 
 source ~/.profile;
 sudo mkdir /usr/local/bin/avi_to_mp4; sudo cp ~/CHPOC/Avit_to_MP4/avi_to_mp4.py /usr/local/bin/avi_to_mp4/avi_to_mp4.py; sudo chmod 755 /usr/local/bin/avi_to_mp4/avi_to_mp4.py;
