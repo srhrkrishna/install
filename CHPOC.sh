@@ -2,6 +2,7 @@ sudo apt-get update;
 sudo apt-get -y install apache2 git python-django python-djangorestframework python-pip libapache2-mod-wsgi keystone;
 sudo pip install django-cors-headers django-rest-swagger;
 
+cd /var/www;
 sudo git clone https://github.com/srhrkrishna/CHPOC.git; 
 cd CHPOC; 
 sudo python manage.py syncdb --noinput; 
@@ -66,11 +67,17 @@ make install
 make distclean;
 hash -r;
 
-sudo apt-get -y install libfaac-dev
+echo 'deb http://us.archive.ubuntu.com/ubuntu/ precise multiverse' | sudo tee -a /etc/apt/sources.list; 
+echo 'deb-src http://us.archive.ubuntu.com/ubuntu/ precise multiverse' | sudo tee -a /etc/apt/sources.list;
+echo 'deb http://us.archive.ubuntu.com/ubuntu/ precise-updates multiverse' | sudo tee -a /etc/apt/sources.list;
+echo 'deb-src http://us.archive.ubuntu.com/ubuntu/ precise-updates multiverse' | sudo tee -a /etc/apt/sources.list;
+
+sudo apt-get update;
+sudo apt-get -y install libfaac-dev;
 
 source ~/.profile;
-sudo mkdir /usr/local/bin/avi_to_mp4; sudo cp ~/CHPOC/Avit_to_MP4/avi_to_mp4.py /usr/local/bin/avi_to_mp4/avi_to_mp4.py; sudo chmod 755 /usr/local/bin/avi_to_mp4/avi_to_mp4.py;
+sudo mkdir /usr/local/bin/avi_to_mp4; sudo cp /var/www/CHPOC/Avit_to_MP4/avi_to_mp4.py /usr/local/bin/avi_to_mp4/avi_to_mp4.py; sudo chmod 755 /usr/local/bin/avi_to_mp4/avi_to_mp4.py;
 
-sudo cp ~/CHPOC/Avit_to_MP4/avi_to_mp4.sh /etc/init.d/; sudo chmod 755 /etc/init.d/avi_to_mp4.sh;
+sudo cp /var/www/CHPOC/Avit_to_MP4/avi_to_mp4.sh /etc/init.d/; sudo chmod 755 /etc/init.d/avi_to_mp4.sh;
 
 sudo /etc/init.d/avi_to_mp4.sh start;
